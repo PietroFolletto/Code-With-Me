@@ -81,7 +81,7 @@ export default function SignupPage() {
           </Link>
         }
       >
-        <p className="text-sm text-[#5B6270] leading-relaxed">
+        <p className="text-sm text-[#4A4766] leading-relaxed">
           Mandamos um link de confirmação pra <strong className="text-textOnLight">{email}</strong>.
           Clica nele pra ativar sua conta e começar a trilha.
         </p>
@@ -105,7 +105,7 @@ export default function SignupPage() {
     >
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="name" className="text-xs font-medium text-[#5B6270]">
+          <label htmlFor="name" className="text-xs font-medium text-[#4A4766]">
             Nome
           </label>
           <input
@@ -115,13 +115,13 @@ export default function SignupPage() {
             autoComplete="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="focus-ring rounded-lg border border-[#DCD8CE] bg-white px-3.5 py-2.5 text-sm text-textOnLight placeholder:text-[#A7ADB8]"
+            className="focus-ring rounded-lg border border-[#B9B7C9] bg-white px-3.5 py-2.5 text-sm text-textOnLight placeholder:text-[#7E7B98]"
             placeholder="Como podemos te chamar"
           />
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="email" className="text-xs font-medium text-[#5B6270]">
+          <label htmlFor="email" className="text-xs font-medium text-[#4A4766]">
             E-mail
           </label>
           <input
@@ -131,13 +131,13 @@ export default function SignupPage() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="focus-ring rounded-lg border border-[#DCD8CE] bg-white px-3.5 py-2.5 text-sm text-textOnLight placeholder:text-[#A7ADB8]"
+            className="focus-ring rounded-lg border border-[#B9B7C9] bg-white px-3.5 py-2.5 text-sm text-textOnLight placeholder:text-[#7E7B98]"
             placeholder="voce@email.com"
           />
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="password" className="text-xs font-medium text-[#5B6270]">
+          <label htmlFor="password" className="text-xs font-medium text-[#4A4766]">
             Senha
           </label>
           <input
@@ -148,7 +148,7 @@ export default function SignupPage() {
             autoComplete="new-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="focus-ring rounded-lg border border-[#DCD8CE] bg-white px-3.5 py-2.5 text-sm text-textOnLight"
+            className="focus-ring rounded-lg border border-[#B9B7C9] bg-white px-3.5 py-2.5 text-sm text-textOnLight"
             placeholder="mínimo 6 caracteres"
           />
         </div>
@@ -170,15 +170,15 @@ export default function SignupPage() {
         {GOOGLE_ATIVO && (
           <>
         <div className="flex items-center gap-3 my-1">
-          <span className="h-px flex-1 bg-[#DCD8CE]" />
-          <span className="text-xs text-[#A7ADB8]">ou</span>
-          <span className="h-px flex-1 bg-[#DCD8CE]" />
+          <span className="h-px flex-1 bg-[#B9B7C9]" />
+          <span className="text-xs text-[#7E7B98]">ou</span>
+          <span className="h-px flex-1 bg-[#B9B7C9]" />
         </div>
 
         <button
           type="button"
           onClick={handleGoogleSignup}
-          className="focus-ring rounded-lg border border-[#DCD8CE] bg-white py-2.5 text-sm font-medium text-textOnLight"
+          className="focus-ring rounded-lg border border-[#B9B7C9] bg-white py-2.5 text-sm font-medium text-textOnLight"
         >
           Continuar com Google
         </button>

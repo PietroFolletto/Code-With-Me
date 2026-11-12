@@ -26,5 +26,5 @@ export default async function NivelPage({ params }: { params: { id: string } }) 
     if (!anterior?.concluido) redirect("/app");
   }
 
-  return <NivelPlayer nivel={nivel} userId={user.id} />;
+  return <NivelPlayer nivel={nivel} />;
 }

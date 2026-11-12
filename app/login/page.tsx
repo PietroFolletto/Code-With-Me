@@ -69,7 +69,7 @@ export default function LoginPage() {
     >
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="email" className="text-xs font-medium text-[#5B6270]">
+          <label htmlFor="email" className="text-xs font-medium text-[#4A4766]">
             E-mail
           </label>
           <input
@@ -79,13 +79,13 @@ export default function LoginPage() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="focus-ring rounded-lg border border-[#DCD8CE] bg-white px-3.5 py-2.5 text-sm text-textOnLight placeholder:text-[#A7ADB8]"
+            className="focus-ring rounded-lg border border-[#B9B7C9] bg-white px-3.5 py-2.5 text-sm text-textOnLight placeholder:text-[#7E7B98]"
             placeholder="voce@email.com"
           />
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="password" className="text-xs font-medium text-[#5B6270]">
+          <label htmlFor="password" className="text-xs font-medium text-[#4A4766]">
             Senha
           </label>
           <input
@@ -95,7 +95,7 @@ export default function LoginPage() {
             autoComplete="current-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="focus-ring rounded-lg border border-[#DCD8CE] bg-white px-3.5 py-2.5 text-sm text-textOnLight"
+            className="focus-ring rounded-lg border border-[#B9B7C9] bg-white px-3.5 py-2.5 text-sm text-textOnLight"
             placeholder="••••••••"
           />
         </div>
@@ -117,15 +117,15 @@ export default function LoginPage() {
         {GOOGLE_ATIVO && (
           <>
         <div className="flex items-center gap-3 my-1">
-          <span className="h-px flex-1 bg-[#DCD8CE]" />
-          <span className="text-xs text-[#A7ADB8]">ou</span>
-          <span className="h-px flex-1 bg-[#DCD8CE]" />
+          <span className="h-px flex-1 bg-[#B9B7C9]" />
+          <span className="text-xs text-[#7E7B98]">ou</span>
+          <span className="h-px flex-1 bg-[#B9B7C9]" />
         </div>
 
         <button
           type="button"
           onClick={handleGoogleLogin}
-          className="focus-ring flex items-center justify-center gap-2 rounded-lg border border-[#DCD8CE] bg-white py-2.5 text-sm font-medium text-textOnLight"
+          className="focus-ring flex items-center justify-center gap-2 rounded-lg border border-[#B9B7C9] bg-white py-2.5 text-sm font-medium text-textOnLight"
         >
           <GoogleIcon />
           Continuar com Google

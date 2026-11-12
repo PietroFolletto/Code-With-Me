@@ -7,19 +7,19 @@ html {
 }
 
 body {
-  background-color: #12151c;
+  background-color: #121126;
 }
 
 ::selection {
-  background-color: #f2a65a;
-  color: #12151c;
+  background-color: #30bf62;
+  color: #121126;
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  -webkit-text-fill-color: #1b1f27;
-  -webkit-box-shadow: 0 0 0px 1000px #f5f3ee inset;
+  -webkit-text-fill-color: #1b1830;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -27,6 +27,6 @@ input:-webkit-autofill:focus {
   outline: none;
 }
 .focus-ring:focus-visible {
-  outline: 2px solid #f2a65a;
+  outline: 2px solid #30bf62;
   outline-offset: 2px;
 }

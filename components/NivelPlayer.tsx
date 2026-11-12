@@ -3,18 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
+import { registrarResultado } from "@/app/actions";
 import { ACERTOS_PARA_PASSAR, XP_POR_ACERTO, type Nivel } from "@/lib/trilha";
 
-export default function NivelPlayer({
-  nivel,
-  userId,
-}: {
-  nivel: Nivel;
-  userId: string;
-}) {
+export default function NivelPlayer({ nivel }: { nivel: Nivel }) {
   const router = useRouter();
-  const supabase = createClient();
 
   const total = nivel.questoes.length;
 
@@ -52,33 +45,12 @@ export default function NivelPlayer({
     setSalvando(true);
     setErroSalvar(null);
 
-    const { data: atual } = await supabase
-      .from("progresso")
-      .select("acertos, concluido")
-      .eq("user_id", userId)
-      .eq("nivel_id", nivel.id)
-      .maybeSingle();
-
-    const melhor = Math.max(atual?.acertos ?? 0, acertosFinal);
-    const concluido =
-      Boolean(atual?.concluido) || acertosFinal >= ACERTOS_PARA_PASSAR;
-
-    const { error } = await supabase.from("progresso").upsert(
-      {
-        user_id: userId,
-        nivel_id: nivel.id,
-        acertos: melhor,
-        total,
-        concluido,
-        atualizado_em: new Date().toISOString(),
-      },
-      { onConflict: "user_id,nivel_id" }
-    );
+    const resultado = await registrarResultado(nivel.id, acertosFinal);
 
     setSalvando(false);
 
-    if (error) {
-      setErroSalvar("Não consegui salvar seu progresso agora.");
+    if (!resultado.ok) {
+      setErroSalvar(resultado.erro ?? "Não consegui salvar seu progresso agora.");
     } else {
       router.refresh();
     }

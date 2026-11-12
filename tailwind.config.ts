@@ -5,16 +5,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#12151C",
-        panel: "#1A1F29",
-        panelLight: "#F5F3EE",
-        line: "#2A3140",
-        textPrimary: "#EDEFF3",
-        textMuted: "#8B93A3",
-        textOnLight: "#1B1F27",
-        accent: "#F2A65A",
-        accentDim: "#B97C3D",
-        trail: "#7EC9A6",
+        ink: "#121126",
+        panel: "#1D1840",
+        panelLight: "#D9D9D9",
+        line: "#302559",
+        textPrimary: "#F1F0F7",
+        textMuted: "#A9A6C4",
+        textOnLight: "#1B1830",
+        accent: "#30BF62",
+        accentDim: "#1E8E47",
+        trail: "#30BF62",
       },
       fontFamily: {
         display: ["var(--font-display)"],
