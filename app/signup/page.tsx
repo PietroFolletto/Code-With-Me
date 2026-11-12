@@ -2,10 +2,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import AuthShell from "@/components/AuthShell";
 
+// Mude para true quando o login com Google estiver configurado no Supabase.
+const GOOGLE_ATIVO = false;
+
 export default function SignupPage() {
+  const router = useRouter();
   const supabase = createClient();
 
   const [name, setName] = useState("");
@@ -20,7 +25,7 @@ export default function SignupPage() {
     setError(null);
     setLoading(true);
 
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -32,9 +37,24 @@ export default function SignupPage() {
     setLoading(false);
 
     if (error) {
-     setError(error.message);
-     return;
-   }
+      setError(
+        error.message.includes("already registered")
+          ? "Esse e-mail já tem conta."
+          : error.message.includes("at least")
+          ? "A senha precisa ter pelo menos 6 caracteres."
+          : error.message.includes("invalid")
+          ? "Esse e-mail não parece válido. Confira se digitou certo."
+          : "Não deu pra criar a conta agora. Tenta de novo em instantes."
+      );
+      return;
+    }
+
+    // Sem confirmação por e-mail, o Supabase já devolve a sessão: entra direto.
+    if (data.session) {
+      router.push("/app");
+      router.refresh();
+      return;
+    }
 
     setSent(true);
   }
@@ -147,6 +167,8 @@ export default function SignupPage() {
           {loading ? "Criando..." : "Criar conta"}
         </button>
 
+        {GOOGLE_ATIVO && (
+          <>
         <div className="flex items-center gap-3 my-1">
           <span className="h-px flex-1 bg-[#DCD8CE]" />
           <span className="text-xs text-[#A7ADB8]">ou</span>
@@ -160,6 +182,8 @@ export default function SignupPage() {
         >
           Continuar com Google
         </button>
+          </>
+        )}
       </form>
     </AuthShell>
   );

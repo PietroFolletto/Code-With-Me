@@ -6,6 +6,9 @@ import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import AuthShell from "@/components/AuthShell";
 
+// Mude para true quando o login com Google estiver configurado no Supabase.
+const GOOGLE_ATIVO = false;
+
 export default function LoginPage() {
   const router = useRouter();
   const supabase = createClient();
@@ -82,14 +85,9 @@ export default function LoginPage() {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <div className="flex items-center justify-between">
-            <label htmlFor="password" className="text-xs font-medium text-[#5B6270]">
-              Senha
-            </label>
-            <Link href="/reset-password" className="text-xs text-accentDim">
-              Esqueci a senha
-            </Link>
-          </div>
+          <label htmlFor="password" className="text-xs font-medium text-[#5B6270]">
+            Senha
+          </label>
           <input
             id="password"
             type="password"
@@ -116,6 +114,8 @@ export default function LoginPage() {
           {loading ? "Entrando..." : "Entrar"}
         </button>
 
+        {GOOGLE_ATIVO && (
+          <>
         <div className="flex items-center gap-3 my-1">
           <span className="h-px flex-1 bg-[#DCD8CE]" />
           <span className="text-xs text-[#A7ADB8]">ou</span>
@@ -130,6 +130,8 @@ export default function LoginPage() {
           <GoogleIcon />
           Continuar com Google
         </button>
+          </>
+        )}
       </form>
     </AuthShell>
   );
